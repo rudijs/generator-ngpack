@@ -1,0 +1,38 @@
+{
+  "name": "generator-ngpack",
+  "version": "1.0.0",
+  "description": "Yeoman generator for AngularJS and Webpack",
+  "main": "index.js",
+  "files": [
+    "app"
+  ],
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.22.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudijs/generator-ngpack.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "framework",
+    "component",
+    "front-end",
+    "app",
+    "angular",
+    "angularjs",
+    "webpack"
+  ],
+  "author": "Rudi Starcevic <ooly.me@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rudijs/generator-ngpack/issues"
+  },
+  "homepage": "https://github.com/rudijs/generator-ngpack#readme"
+}
