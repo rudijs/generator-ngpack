@@ -21,5 +21,8 @@ const ngModule = angular.module('app', [
 import commonDirectives from './common/directives';
 commonDirectives(ngModule);
 
+import commonServices from './common/services';
+commonServices(ngModule);
+
 import home from './home';
 home(ngModule);

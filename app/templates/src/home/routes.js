@@ -1,5 +1,7 @@
 export default ngModule => {
+
   ngModule.config(($stateProvider, $urlRouterProvider) => {
+
     // For any unmatched url, redirect to /home
     $urlRouterProvider.otherwise('/home');
 
@@ -7,8 +9,11 @@ export default ngModule => {
     $stateProvider
       .state('home', {
         url: '/home',
-        template: require('./home.html')
-        // controller: 'SampleCtrl'
+        template: require('./home.html'),
+        controller: 'HomeCtrl',
+        controllerAs: 'vm'
       });
+
   });
+
 };
