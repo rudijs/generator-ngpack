@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+  webpack = require('webpack-stream'),
   fse = require('fs-extra');
 
 var $ = require('gulp-load-plugins')({ lazy: true });
@@ -19,15 +20,12 @@ gulp.task('webpack', () => {
   webpackConfig.watch = true;
 
   return gulp.src('./src/**/*.js')
-    .pipe($.webpack(webpackConfig))
+    .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('assets', () => {
-  $.watch([
-    'src/**/*.html',
-    'src/**/*.css',
-    ], vinyl => {
+  $.watch('src/index.html', vinyl => {
 
     var src = vinyl.path;
     var dest = vinyl.path.replace(/\/src\//, '/dist/');
