@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var argv = require('yargs').argv;
 var webpack = require('webpack-stream');
 var fse = require('fs-extra');
+var execSync = require('child_process').execSync;
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task('default', $.taskListing);
@@ -77,4 +78,22 @@ gulp.task('lint', () => {
     .pipe($.eslint.format())
 		// Brick on failure to be super strict
     .pipe($.eslint.failOnError());
+});
+
+gulp.task('karma', () => {
+  var cmd = [
+    'NODE_ENV=test',
+    './node_modules/.bin/karma start karma.conf.js'
+  ];
+
+  if (argv.s) {
+    cmd.push('--single-run');
+    cmd.push('--reporters dots');
+  }
+
+  if (argv.p) {
+    cmd.push('--browsers PhantomJS');
+  }
+
+  return execSync(cmd.join(' '), { stdio: [0, 1, 2] });
 });

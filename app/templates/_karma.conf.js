@@ -23,7 +23,12 @@ module.exports = function (config) {
     ],
 
     // list of files / patterns to load in the browser
-    files: [entry],
+    files: [
+      // https://github.com/webpack/style-loader/issues/31
+      './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      // application files
+      entry
+    ],
 
     webpack: webpackConfig,
 
@@ -75,6 +80,7 @@ module.exports = function (config) {
       'karma-chai',
       'karma-mocha',
       'karma-chrome-launcher',
+      'karma-phantomjs-launcher',
       'karma-coverage'
     ]
   })
