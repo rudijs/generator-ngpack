@@ -1,5 +1,5 @@
-import DataSvc from './data.service';
+import dataSvc from './data.service';
 
 export default ngModule => {
-  DataSvc(ngModule);
-}
+  dataSvc(ngModule);
+};

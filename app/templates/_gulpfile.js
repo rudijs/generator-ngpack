@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
   webpack = require('webpack-stream'),
-  fse = require('fs-extra');
+  fse = require('fs-extra'),
+  eslint = require('gulp-eslint');
 
 var $ = require('gulp-load-plugins')({ lazy: true });
 
@@ -37,4 +38,17 @@ gulp.task('assets', () => {
     });
 
   });
+});
+
+gulp.task('lint', () => {
+  return gulp.src('src/**/*.js').pipe(eslint({
+    extends: "google"
+  }))
+    .pipe(eslint.format())
+		// Brick on failure to be super strict
+    .pipe(eslint.failOnError());
+});
+
+gulp.task('lint-watch', () => {
+  gulp.watch('src/**/*.js', ['lint']);
 });
