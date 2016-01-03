@@ -25,7 +25,7 @@ module.exports = generators.Base.extend({
     this.copy('gitignore', '.gitignore');
 
     this.copy('src/_index.html', 'src/index.html');
-    this.copy('src/_index.html', 'dist/index.html');
+    this.copy('src/_index.html', 'build/index.html');
     this.copy('src/_index.js', 'src/index.js');
     this.directory('src/common', 'src/common');
     this.directory('src/home', 'src/home');

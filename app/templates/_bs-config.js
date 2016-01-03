@@ -1,4 +1,4 @@
-
+'use strict';
 /*
  |--------------------------------------------------------------------------
  | Browser-sync config file
@@ -19,10 +19,10 @@ module.exports = {
       "port": 8080
     }
   },
-  "files": "dist/**/*",
+  "files": "build/**/*",
   "watchOptions": {},
   "server": {
-    "baseDir": "dist"
+    "baseDir": "build"
   },
   "proxy": false,
   "port": 3000,

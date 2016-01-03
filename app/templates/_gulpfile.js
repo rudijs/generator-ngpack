@@ -1,9 +1,9 @@
+'use strict';
+
 var gulp = require('gulp');
 var argv = require('yargs').argv;
 var webpack = require('webpack-stream');
 var fse = require('fs-extra');
-var eslint = require('gulp-eslint');
-
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task('default', $.taskListing);
@@ -26,13 +26,27 @@ gulp.task('webpack', () => {
 
   return gulp.src('./src/**/*.js')
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('assets', () => {
-  $.watch('src/index.html', vinyl => {
+  var files = [
+    'src/index.html'
+  ];
+
+  // if not watching files, then one time copy all
+  if (!argv.w) {
+    return gulp
+      .src(files)
+      .pipe($.print(file => {
+        return `==> Copied to build/: ${file}`;
+      }))
+      .pipe(gulp.dest('build'));
+  }
+
+  $.watch(files, vinyl => {
     var src = vinyl.path;
-    var dest = vinyl.path.replace(/\/src\//, '/dist/');
+    var dest = vinyl.path.replace(/\/src\//, '/build/');
 
     fse.copy(src, dest, err => {
       if (err) {
@@ -57,10 +71,10 @@ gulp.task('lint', () => {
     return gulp.watch(src, ['lint']);
   }
 
-  return gulp.src(src).pipe(eslint({
+  return gulp.src(src).pipe($.eslint({
     extends: 'google'
   }))
-    .pipe(eslint.format())
+    .pipe($.eslint.format())
 		// Brick on failure to be super strict
-    .pipe(eslint.failOnError());
+    .pipe($.eslint.failOnError());
 });
