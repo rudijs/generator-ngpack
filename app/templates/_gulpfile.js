@@ -26,6 +26,7 @@ gulp.task('webpack', () => {
   }
 
   return gulp.src('./src/**/*.js')
+    .pipe($.plumber())
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('./build'));
 });

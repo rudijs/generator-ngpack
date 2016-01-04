@@ -13,10 +13,15 @@ if (ON_TEST) {
   require('angular-mocks');
 }
 
-const ngModule = angular.module('app', [
-  'ui.router',
-  'ngMaterial'
-]);
+const ngModule = angular
+  .module('app', [
+    'ui.router',
+    'ngMaterial'
+  ])
+  .config($locationProvider => {
+    // Enable HTML5 Location Mode
+    $locationProvider.hashPrefix('!');
+  });
 
 import commonDirectives from './common/directives';
 commonDirectives(ngModule);
@@ -26,3 +31,10 @@ commonServices(ngModule);
 
 import home from './home';
 home(ngModule);
+
+/**
+ * Add new feature folders here
+ * Example: About Us
+ */
+// import aboutUs from './about-us';
+// aboutUs(ngModule);
