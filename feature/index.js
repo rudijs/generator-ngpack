@@ -12,7 +12,7 @@ module.exports = generators.Base.extend({
     this.featureTitle = _.startCase(this.featureName);
     this.folderName = _.kebabCase(this.featureName);
     this.fileName = _.snakeCase(this.featureName);
-    this.ngFunctionName = _.camelCase(this.featureName);
+    this.ngFunctionName = _.camelCase(this.featureName) + 'Ctrl';
     this.ngControllerName = _.capitalize(this.ngFunctionName);
     this.ngRouteName = this.featureName.toLowerCase();
 
@@ -28,6 +28,7 @@ module.exports = generators.Base.extend({
     this.copy('feature.html', `src/${this.folderName}/${this.fileName}.html`);
     this.copy('feature.styl', `src/${this.folderName}/${this.fileName}.styl`);
     this.copy('feature.controller.js', `src/${this.folderName}/${this.fileName}.controller.js`);
+    this.copy('feature.controller_spec.js', `src/${this.folderName}/${this.fileName}.controller_spec.js`);
     this.copy('index.js', `src/${this.folderName}/index.js`);
     this.copy('routes.js', `src/${this.folderName}/routes.js`);
   },
