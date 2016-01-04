@@ -1,8 +1,8 @@
 import './home.styl';
-import routes from './routes';
+import homeRoutes from './home.routes';
 import homeCtrl from './home.controller';
 
 export default ngModule => {
-  routes(ngModule);
+  homeRoutes(ngModule);
   homeCtrl(ngModule);
 };

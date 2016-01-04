@@ -1,8 +1,8 @@
 import './<%= fileName %>.styl';
-import routes from './routes';
-import <%= ngFunctionName %> from './<%= fileName %>.controller';
+import <%= ngFunctionName %>Routes from './<%= fileName %>.routes';
+import <%= ngFunctionName %>Ctrl from './<%= fileName %>.controller';
 
 export default ngModule => {
-  routes(ngModule);
-  <%= ngFunctionName %>(ngModule);
+  <%= ngFunctionName %>Routes(ngModule);
+  <%= ngFunctionName %>Ctrl(ngModule);
 };

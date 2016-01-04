@@ -3,12 +3,12 @@ export default ngModule => {
     require('./<%= fileName %>.controller_spec').default(ngModule);
   }
 
-  ngModule.controller('<%= ngControllerName %>', <%= ngFunctionName %>);
+  ngModule.controller('<%= ngControllerName %>', <%= ngControllerFunction %>);
 
   /**
    * <%= ngControllerName %>
    */
-  function <%= ngFunctionName %>() {
+  function <%= ngControllerFunction %>() {
     var vm = this;
     vm.title = '<%= featureTitle %>';
   }
