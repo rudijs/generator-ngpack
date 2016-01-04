@@ -30,5 +30,23 @@ module.exports = generators.Base.extend({
     this.copy('feature.controller.js', `src/${this.folderName}/${this.fileName}.controller.js`);
     this.copy('index.js', `src/${this.folderName}/index.js`);
     this.copy('routes.js', `src/${this.folderName}/routes.js`);
+  },
+  end: function() {
+    console.log(`\n==> Code help samples and tips <==`);
+    console.log(`==================================`);
+
+    console.log(`\n==> Javascript code snippet for index.js to load the '${this.featureTitle}' feature:`);
+    var snippet = `import ${this.ngFunctionName} from './${this.fileName}';\n${this.ngFunctionName}(ngModule);\n`;
+    console.log(snippet);
+
+    var tip = `==> Update route url \'/${this.ngRouteName}\' in \'src/${this.folderName}/routes.js\' as required.\n`
+    console.log(tip);
+
+    console.log('==> HTML href tag code snippet:');
+    var htmlHref = `<a href="#!/${this.ngRouteName}">${this.featureTitle}</a>`;
+    console.log(htmlHref);
+
+    console.log(`\n==> Done <==`);
+    console.log(`============`);
   }
 });
