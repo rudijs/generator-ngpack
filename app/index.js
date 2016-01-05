@@ -26,8 +26,15 @@ module.exports = generators.Base.extend({
 
     this.copy('src/_index.html', 'src/index.html');
     this.copy('src/_index.html', 'build/index.html');
-    this.copy('src/_index.js', 'src/index.js');
+    this.copy('src/_app.js', 'src/app.js');
     this.directory('src/common', 'src/common');
     this.directory('src/home', 'src/home');
+  },
+
+  install: function() {
+    this.installDependencies({
+      bower: false,
+      npm: true
+    });
   }
 });

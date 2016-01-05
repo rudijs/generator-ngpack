@@ -1,7 +1,5 @@
+import directive from './header_main.directive';
+
 export default ngModule => {
-  ngModule.directive('ssHeaderMain', () => {
-    return {
-      template: require('./header_main.html')
-    };
-  });
+  directive(ngModule);
 };
