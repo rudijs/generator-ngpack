@@ -4,6 +4,25 @@ var path = require('path');
 
 var webpackConfig = require('./webpack.config');
 
+/* Karma Instanbul code coverage reports */
+webpackConfig.isparta = {
+  embedSource: true,
+  noAutoWrap: true,
+  // these babel options will be passed only to isparta and not to babel-loader
+  babel: {
+    presets: ['es2015']
+  }
+};
+webpackConfig.module.preLoaders = [
+  // instrument only testing sources with Istanbul
+  {
+    test: /\.js$/,
+    include: path.resolve('src/'),
+    loader: 'isparta'
+  }
+];
+
+
 var entry = path.resolve(webpackConfig.context, webpackConfig.entry);
 
 var preprocessors = {};

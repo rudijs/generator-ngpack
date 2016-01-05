@@ -15,13 +15,10 @@ var config = {
       ON_TEST: process.env.NODE_ENV === 'test'
     })
   ],
-  isparta: {
-    embedSource: true,
-    noAutoWrap: true,
-    // these babel options will be passed only to isparta and not to babel-loader
-    babel: {
-      presets: ['es2015']
-    }
+  babel: {
+    // https://github.com/babel/babel-loader#options
+    cacheDirectory: true,
+    presets: ['es2015']
   },
   module: {
     loaders: [
@@ -41,24 +38,24 @@ var config = {
       // },
       {
         test: /\.js$/,
-        loader: "babel",
-        exclude: /node_modules/,
-        query: {
-          // https://github.com/babel/babel-loader#options
-          cacheDirectory: true,
-          presets: ['es2015']
-        }
-      }
-    ],
-    preLoaders: [
-      // instrument only testing sources with Istanbul
-      {
-        test: /\.js$/,
-        include: path.resolve('src/'),
-        loader: 'isparta'
+        // loader: "babel",
+        // loader: "ng-annotate!babel?presets[]=es2015",
+        loader: "ng-annotate!babel",
+        exclude: /node_modules/
+        // query: {
+        //   // https://github.com/babel/babel-loader#options
+        //   cacheDirectory: true,
+        //   presets: ['es2015']
+        // }
       }
     ]
-		}
+  }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.output.path = __dirname + '/dist';
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.devtool = 'source-map';
+}
 
 module.exports = config;

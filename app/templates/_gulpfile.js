@@ -98,3 +98,31 @@ gulp.task('karma', () => {
 
   return execSync(cmd.join(' '), { stdio: [0, 1, 2] });
 });
+
+gulp.task('webpack-production', () => {
+  const envs = $.env.set({
+    NODE_ENV: 'production'
+  });
+
+  const webpackConfig = require('./webpack.config.js');
+
+  return gulp.src('./src/**/*.js')
+    .pipe(envs)
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('assets-production', () => {
+  const files = [
+    'src/index.html'
+  ];
+
+  return gulp
+    .src(files)
+    .pipe($.print(file => {
+      return `==> Copied to build/: ${file}`;
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist', ['webpack-production', 'assets-production']);

@@ -18,7 +18,10 @@ const ngModule = angular
     'ui.router',
     'ngMaterial'
   ])
-  .config($locationProvider => {
+  /* This config block requires manual ng-annotation with an array or @ngInject.
+    The build pipeline requires this, else it errors out. */
+  .config( // @ngInject
+   $locationProvider => {
     // Enable HTML5 Location Mode
     $locationProvider.hashPrefix('!');
   });
