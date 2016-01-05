@@ -6,6 +6,8 @@ var webpack = require('webpack-stream');
 var fse = require('fs-extra');
 var execSync = require('child_process').execSync;
 var $ = require('gulp-load-plugins')({ lazy: true });
+var rimraf = require('rimraf');
+var runSequence = require('run-sequence');
 
 gulp.task('default', $.taskListing);
 gulp.task('help', $.taskListing);
@@ -99,7 +101,11 @@ gulp.task('karma', () => {
   return execSync(cmd.join(' '), { stdio: [0, 1, 2] });
 });
 
-gulp.task('webpack-production', () => {
+gulp.task('dist-clean', callback => {
+  rimraf('dist', callback);
+});
+
+gulp.task('dist-webpack', () => {
   const envs = $.env.set({
     NODE_ENV: 'production'
   });
@@ -112,9 +118,9 @@ gulp.task('webpack-production', () => {
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('assets-production', () => {
+gulp.task('dist-assets', () => {
   const files = [
-    'src/index.html'
+    'src/images/**/*.svg'
   ];
 
   return gulp
@@ -125,4 +131,34 @@ gulp.task('assets-production', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist', ['webpack-production', 'assets-production']);
+gulp.task('dist-revision', () => {
+  return gulp
+    .src(['dist/bundle.js'])
+    .pipe($.rev())
+    .pipe(gulp.dest('dist'))
+    .pipe($.rev.manifest())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist-revreplace', () => {
+  const manifest = gulp.src('dist/rev-manifest.json');
+
+  return gulp
+    .src('src/index.html')
+    .pipe($.revReplace({ manifest: manifest }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist', callback => {
+  runSequence(
+    'dist-clean',
+    'dist-webpack',
+    // build in parallel
+    [
+      'dist-assets'
+    ],
+    'dist-revision',
+    'dist-revreplace',
+    callback
+    );
+});
