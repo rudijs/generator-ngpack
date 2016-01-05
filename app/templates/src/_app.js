@@ -39,5 +39,5 @@ home(ngModule);
  * Add new feature folders here
  * Example: About Us
  */
-// import aboutUs from './about-us';
-// aboutUs(ngModule);
+// import about from './about';
+// about(ngModule);
