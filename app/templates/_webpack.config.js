@@ -2,6 +2,7 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
 
 var config = {
   context: __dirname + '/src',
@@ -31,25 +32,21 @@ var config = {
         test: /\.css$/,
         loader: "style!css"
       },
-      // {
-      //   test: /\.styl$/,
-      //   loader: "style!css!stylus",
-      //   exclude: /node_modules/
-      // },
+      {
+        test: /\.styl$/,
+        loader: "style!css!postcss!stylus",
+        exclude: /node_modules/
+      },
       {
         test: /\.js$/,
-        // loader: "babel",
-        // loader: "ng-annotate!babel?presets[]=es2015",
         loader: "ng-annotate!babel",
         exclude: /node_modules/
-        // query: {
-        //   // https://github.com/babel/babel-loader#options
-        //   cacheDirectory: true,
-        //   presets: ['es2015']
-        // }
       }
     ]
-  }
+  },
+  postcss: function () {
+        return [autoprefixer];
+    }
 };
 
 if (process.env.NODE_ENV === 'production') {
