@@ -13,6 +13,7 @@ module.exports = generators.Base.extend({
     // And you can then access it later on this way; e.g. CamelCased
     this.viewName = _.startCase(this.appname);
     this.appname = _.camelCase(this.appname);
+    this.kebabName = _.kebabCase(this.appname);
   },
 
   writing: function () {
