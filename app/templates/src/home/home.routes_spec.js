@@ -14,7 +14,7 @@ export default ngModule => {
       });
 
       /* eslint-disable no-unused-expressions */
-      list.includes('home').should.be.true;
+      list.indexOf('home').should.not.equal(-1);
     });
   });
 };
