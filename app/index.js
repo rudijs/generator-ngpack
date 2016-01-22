@@ -29,6 +29,7 @@ module.exports = generators.Base.extend({
     // this.copy('src/_index.html', 'build/index.html');
     this.copy('src/_app.js', 'src/app.js');
     this.directory('src/common', 'src/common');
+    this.directory('src/assets', 'src/assets');
     this.directory('src/home', 'src/home');
   },
 

@@ -38,6 +38,11 @@ var config = {
         exclude: /node_modules/
       },
       {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: "url-loader",
+        exclude: /node_modules/
+      },
+      {
         test: /\.js$/,
         loader: "ng-annotate!babel",
         exclude: /node_modules/

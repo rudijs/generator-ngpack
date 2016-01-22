@@ -28,6 +28,13 @@ const ngModule = angular
       $locationProvider.hashPrefix('!');
     });
 
+// font faces and icons available site wide
+// .styl files will use the font-faces
+// .html file will use the icons
+// webpack will url-inline them into bundle.js
+import './assets/fonts/font_faces.styl';
+import './assets/icons/flaticon/flaticon.css';
+
 import commonDirectives from './common/directives';
 commonDirectives(ngModule);
 
