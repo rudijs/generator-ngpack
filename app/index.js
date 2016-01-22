@@ -10,7 +10,6 @@ module.exports = generators.Base.extend({
 
     this.argument('appname', { type: String, required: true });
 
-    // And you can then access it later on this way; e.g. CamelCased
     this.viewName = _.startCase(this.appname);
     this.appname = _.camelCase(this.appname);
     this.kebabName = _.kebabCase(this.appname);
@@ -19,18 +18,12 @@ module.exports = generators.Base.extend({
   writing: function () {
     this.copy('_bs-config.js', 'bs-config.js');
     this.copy('_eslintrc', '.eslintrc');
-    // this.copy('_gulpfile.js', 'gulpfile.js');
     this.copy('_package.json', 'package.json');
     this.copy('_webpack.config.js', 'webpack.config.js');
     this.copy('_karma.conf.js', 'karma.conf.js');
     this.copy('gitignore', '.gitignore');
-
-    this.copy('src/_index.html', 'src/index.html');
-    // this.copy('src/_index.html', 'build/index.html');
-    this.copy('src/_app.js', 'src/app.js');
-    this.directory('src/common', 'src/common');
-    this.directory('src/assets', 'src/assets');
-    this.directory('src/home', 'src/home');
+    this.copy('_README.md', 'README.md');
+    this.directory('src', 'src');
   },
 
   install: function() {
