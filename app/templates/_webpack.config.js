@@ -8,7 +8,7 @@ var config = {
   context: __dirname + '/src',
   entry: "./app.js",
 		output: {
-    path: __dirname + '/build',
+    path: __dirname + '/build/assets/js',
     filename: "bundle.js"
 		},
   plugins: [
@@ -55,7 +55,7 @@ var config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.output.path = __dirname + '/dist';
+  config.output.path = __dirname + '/dist/assets/js';
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
   config.devtool = 'source-map';
 }
