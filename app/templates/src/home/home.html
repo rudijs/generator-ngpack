@@ -1,12 +1,62 @@
 <div class="wrapper">
-  <h1>Title</h1>
-  <img src="https://openclipart.org/image/300px/svg_to_png/237835/NEW-Questions-Asked-Clipart-2016011843.png" alt="Question Mark Clipart" width="300" height="300">
+
+  <div class="item_cards">
+    <md-card>
+      <md-card-title class="light-primary-color">
+        <md-card-title-text>
+          <span class="md-headline">Latest Products</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content class="card-content">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <p>Aenean commodo ligula eget dolor.</p>
+        <p>Aenean massa.</p>
+        <p>Cum sociis natoque penatibus et</p>
+        <p>
+          Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+        <p> Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor</p>
+        <p>
+          Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+        <p>
+          viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</p>
+        </p>
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-raised"><span class="flaticon-heart297 highlightz"></span>&nbsp;Flaticons work!</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <md-card>
+
+      <md-card-title class="light-primary-color">
+        <md-card-title-text>
+          <span class="md-headline">Top Selling Items</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content class="card-content">
+
+        <div class="item_img">
+          <img src="https://openclipart.org/image/300px/svg_to_png/237835/NEW-Questions-Asked-Clipart-2016011843.png" width="300" height="300"
+          class="md-card-image imgz" alt="image caption">
+        </div>
+
+        <ol>
+          <li ng-repeat="item in vm.items">{{item}}</li>
+        </ol>
+      </md-card-content>
+    </md-card>
+  </div>
+
   <span class="flaticon-heart297">&nbsp;Flaticons work!</span>
+
   <p>
     <i class="flaticon-alarm52 highlightz"></i> This is a new site where it all happens.
   </p>
-  <ol>
-    <li ng-repeat="item in vm.items">{{item}}</li>
-  </ol>
+
   <p class="highlightz">Version: {{vm.version}}</p>
+
 </div>
