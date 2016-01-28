@@ -31,7 +31,7 @@ module.exports = generators.Base.extend({
     console.log(`==> Code help samples and tips <==`);
     console.log(`==================================`);
 
-    console.log(`\n==> Javascript code snippet for index.js to load the '${this.featureTitle}' feature:`);
+    console.log(`\n==> Javascript code snippet for app.js to load the '${this.featureTitle}' feature:`);
     var snippet = `import ${this.ngFunctionName} from './${this.folderName}';\n${this.ngFunctionName}(ngModule);\n`;
     console.log(snippet);
 

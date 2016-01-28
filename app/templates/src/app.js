@@ -48,9 +48,8 @@ commonServices(ngModule);
 import home from './home';
 home(ngModule);
 
-/**
- * Add new feature folders here
- * Example: About Us
- */
-// import about from './about';
-// about(ngModule);
+import about from './about';
+about(ngModule);
+
+import contact from './contact';
+contact(ngModule);
