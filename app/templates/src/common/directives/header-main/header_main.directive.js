@@ -3,9 +3,15 @@ export default ngModule => {
     require('./header_main.directive_spec').default(ngModule);
   }
 
-  ngModule.directive('appHeaderMain', () => {
+  ngModule.directive('appHeaderMain', NavToggleSvc => {
     return {
-      template: require('./header_main.html')
+      restrict: 'E',
+      template: require('./header_main.html'),
+      link: $scope => {
+        $scope.toggleLeftMenu = () => {
+          NavToggleSvc.toggleLeftMenu();
+        };
+      }
     };
   });
 };

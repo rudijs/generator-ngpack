@@ -38,7 +38,8 @@ module.exports = function (config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
       'mocha',
-      'chai'
+      'chai',
+      'sinon'
     ],
 
     // list of files / patterns to load in the browser
@@ -98,6 +99,7 @@ module.exports = function (config) {
       require('karma-webpack'),
       'karma-chai',
       'karma-mocha',
+      'karma-sinon',
       'karma-chrome-launcher',
       'karma-phantomjs-launcher',
       'karma-coverage'
