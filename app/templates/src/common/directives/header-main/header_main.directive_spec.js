@@ -8,8 +8,8 @@ export default ngModule => {
 
     beforeEach(window.module($provide => {
       $provide.value('NavToggleSvc', {
-          toggleLeftMenu: spy
-        });
+        toggleLeftMenu: spy
+      });
     }));
 
     beforeEach(() => {

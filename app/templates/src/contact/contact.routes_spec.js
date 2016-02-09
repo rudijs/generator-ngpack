@@ -14,7 +14,7 @@ export default ngModule => {
       });
 
       /* eslint-disable no-unused-expressions */
-      list.includes('contact').should.be.true;
+      list.indexOf('contact').should.not.equal(-1);
     });
   });
 };

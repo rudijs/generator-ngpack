@@ -14,7 +14,7 @@ export default ngModule => {
       });
 
       /* eslint-disable no-unused-expressions */
-      list.includes('<%= ngRouteName %>').should.be.true;
+      list.indexOf('<%= ngRouteName %>').should.not.equal(-1);
     });
   });
 };

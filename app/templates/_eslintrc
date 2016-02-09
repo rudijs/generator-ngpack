@@ -8,7 +8,9 @@
   "globals": {
     "inject": true,
     "ON_TEST": true,
-    "angular": true
+    "angular": true,
+    "sinon": true,
+    "expect": true
   },
   "rules": {
     "require-jsdoc": [

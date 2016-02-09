@@ -6,18 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title><%= viewName %></title>
-  <meta name="description" content="Description for <%= viewName %>">
-  <meta name="keywords" content="<%= viewName %>">
+  <title>Juggernaut Site</title>
+  <meta name="description" content="Description for Juggernaut Site">
+  <meta name="keywords" content="Juggernaut Site">
 </head>
 
 <body ng-app="app">
 
   <app-header-main></app-header-main>
 
-  <div class="page-app" ui-view></div>
+  <app-side-nav></app-side-nav>
 
-  <script src="assets/js/bundle.js"></script>
+  <div class="page-app" ui-view></div>
 
   <!--
   <script>

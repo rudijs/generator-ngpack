@@ -18,12 +18,13 @@ const ngModule = angular
     'ui.router',
     'ngMaterial'
   ])
-  .config($mdThemingProvider => {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('light-green');
-  })
-/* This config block requires manual ng-annotation with an array or @ngInject.
-  The build pipeline requires this, else it errors out. */
+/* eslint-disable */
+  .config( // @ngInject
+    /* eslint-enable */
+    $mdThemingProvider => {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('light-green');
+    })
 /* eslint-disable */
   .config( // @ngInject
     /* eslint-enable */

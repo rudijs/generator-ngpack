@@ -23,7 +23,7 @@ export default ngModule => {
       expect(NavToggleSvc).to.respondTo('toggleLeftMenu');
 
       NavToggleSvc.toggleLeftMenu();
-      
+
       sinon.assert.calledOnce(spy);
     });
   });
