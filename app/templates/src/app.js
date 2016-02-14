@@ -5,8 +5,14 @@ import 'angular-ui-router';
 import 'angular-animate';
 import 'angular-aria';
 // import 'angular-messages.min.js';
-import 'angular-material';
 
+/* eslint-disable */
+import ngRedux from 'ng-redux';
+/* eslint-enable */
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+
+import 'angular-material';
 import 'angular-material/angular-material.min.css';
 
 if (ON_TEST) {
@@ -16,7 +22,8 @@ if (ON_TEST) {
 const ngModule = angular
   .module('app', [
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'ngRedux'
   ])
 /* eslint-disable */
   .config( // @ngInject
@@ -31,7 +38,12 @@ const ngModule = angular
     $locationProvider => {
       // Enable HTML5 Location Mode
       $locationProvider.hashPrefix('!');
-    });
+    })
+/* eslint-disable */
+  .config($ngReduxProvider => {
+    /* eslint-enable */
+    $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
+  });
 
 // font faces and icons available site wide
 // .styl files will use the font-faces
@@ -39,6 +51,9 @@ const ngModule = angular
 // webpack will url-inline them into bundle.js
 import './assets/fonts/font_faces.styl';
 import './assets/icons/flaticon/flaticon.css';
+
+import commonComponents from './common/components';
+commonComponents(ngModule);
 
 import commonDirectives from './common/directives';
 commonDirectives(ngModule);

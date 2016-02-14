@@ -10,8 +10,8 @@ var config = {
   context: __dirname + '/src',
   entry: "./app.js",
 		output: {
-      path: __dirname + '/build',
-      filename: "assets/js/bundle.js"
+    path: __dirname + '/build',
+    filename: "assets/js/bundle.js"
 		},
   plugins: [
     new webpack.DefinePlugin({
