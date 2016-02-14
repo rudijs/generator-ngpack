@@ -40,10 +40,11 @@ const ngModule = angular
       $locationProvider.hashPrefix('!');
     })
 /* eslint-disable */
-  .config($ngReduxProvider => {
-    /* eslint-enable */
-    $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
-  });
+  .config( // @ngInject
+    $ngReduxProvider => {
+      /* eslint-enable */
+      $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
+    });
 
 // font faces and icons available site wide
 // .styl files will use the font-faces
