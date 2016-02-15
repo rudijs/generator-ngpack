@@ -23,7 +23,10 @@ module.exports = generators.Base.extend({
     this.copy('_karma.conf.js', 'karma.conf.js');
     this.copy('gitignore', '.gitignore');
     this.copy('_README.md', 'README.md');
+    this.copy('_server.js', 'server.js');
     this.directory('src', 'src');
+    this.directory('httpd', 'httpd');
+    this.directory('log', 'log');
   },
 
   install: function() {

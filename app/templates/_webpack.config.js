@@ -17,9 +17,7 @@ var config = {
     new webpack.DefinePlugin({
       ON_TEST: process.env.NODE_ENV === 'test'
     }),
-
     new HtmlWebpackPlugin({ template: 'index.html' }),
-
     new CopyWebpackPlugin([
       { from: 'favicon.ico' },
       { from: 'robots.txt' }
@@ -66,6 +64,9 @@ var config = {
 if (process.env.NODE_ENV === 'production') {
   config.output.path = __dirname + '/dist';
   config.output.filename = "assets/js/[hash].bundle.js";
+  config.plugins.push(new webpack.DefinePlugin({
+    'process.env.NODE_ENV': '"production"'
+  }));
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
   config.devtool = 'source-map';
 }

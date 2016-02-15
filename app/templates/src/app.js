@@ -25,6 +25,14 @@ const ngModule = angular
     'ngMaterial',
     'ngRedux'
   ])
+
+/* eslint-disable */
+  .config( // @ngInject
+    /* eslint-enable */
+    $locationProvider => {
+      // use the HTML5 History API
+      $locationProvider.html5Mode(true);
+    })
 /* eslint-disable */
   .config( // @ngInject
     /* eslint-enable */
