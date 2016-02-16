@@ -4,6 +4,8 @@
   "description": "<%= viewName %> description",
   "main": "index.js",
   "private": true,
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "test": "npm run karma:ci",
     "karma": "NODE_ENV=test karma start karma.conf.js",
@@ -15,14 +17,12 @@
     "build": "rm -rfv build && webpack",
     "build:watch": "npm run build -- --watch",
     "dist-clean": "rm -rfv dist/",
-    "build:prod": "npm run dist-clean && NODE_ENV=production npm run build && mv -v dist/index.html httpd",
+    "build:prod": "npm run dist-clean && NODE_ENV=production npm run build && mv -v dist/index.html httpd && npm shrinkwrap",
     "build:prod:cdn": "CDN=true npm run build:prod",
     "start": "webpack-dev-server --history-api-fallback --inline --hot",
     "start:dev": "browser-sync start --config bs-config.js",
     "start:prod": "NODE_ENV=production node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "angular-mocks": "^1.4.8",
     "autoprefixer": "^6.3.1",

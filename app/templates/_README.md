@@ -52,6 +52,8 @@ Option 2:
 
 ## Production Build
 
+TODO npm shrinkwrap
+
 Compile static assests into `dist/` (bundle.js, images etc)
 
 Copy index.html into `httpd/` for production web server
@@ -64,6 +66,12 @@ Copy index.html into `httpd/` for production web server
 CDN Deliver static assets for builds on production (non-local) servers.
 
 - `npm run build:prod:cdn`
+
+Docker
+
+- `./docker-build.sh 1.0.1`
+- `sudo TAG=1.0.1 docker-compose up -d`
+- `sudo TAG=1.0.1 docker-compose down`
 
 ## NPM Build Scripts
 

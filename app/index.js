@@ -27,6 +27,12 @@ module.exports = generators.Base.extend({
     this.directory('src', 'src');
     this.directory('httpd', 'httpd');
     this.directory('log', 'log');
+
+    this.copy('_docker-build.sh', 'docker-build.sh');
+    this.copy('_docker-compose.yml', 'docker-compose.yml');
+    this.copy('_Dockerfile', 'Dockerfile');
+    this.copy('_docker-start.sh', 'docker-start.sh');
+    this.copy('_logrotate.conf', 'logrotate.conf');
   },
 
   install: function() {
