@@ -1,4 +1,7 @@
 {
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": "google",
   "env": {
     "browser": true,

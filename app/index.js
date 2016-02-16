@@ -17,7 +17,7 @@ module.exports = generators.Base.extend({
 
   writing: function () {
     this.copy('_bs-config.js', 'bs-config.js');
-    this.copy('_eslintrc', '.eslintrc');
+    this.copy('_eslintrc.json', '.eslintrc.json');
     this.copy('_package.json', 'package.json');
     this.copy('_webpack.config.js', 'webpack.config.js');
     this.copy('_karma.conf.js', 'karma.conf.js');
