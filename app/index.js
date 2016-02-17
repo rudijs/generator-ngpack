@@ -33,6 +33,7 @@ module.exports = generators.Base.extend({
     this.copy('_Dockerfile', 'Dockerfile');
     this.copy('_docker-start.sh', 'docker-start.sh');
     this.copy('_logrotate.conf', 'logrotate.conf');
+    this.copy('_filebeat.yml', 'filebeat.yml');
   },
 
   install: function() {

@@ -1,0 +1,13 @@
+filebeat:
+  prospectors:
+    -
+      paths:
+        - "/srv/app/log/*.log"
+
+output:
+  logstash:
+    hosts: ["192.168.0.102:5044"]
+
+shipper:
+  name: app-server
+  tags: ["service-X", "web-tier"]
