@@ -6,9 +6,7 @@ import 'angular-animate';
 import 'angular-aria';
 // import 'angular-messages.min.js';
 
-/* eslint-disable */
-import ngRedux from 'ng-redux';
-/* eslint-enable */
+import ngRedux from 'ng-redux'; // eslint-disable-line no-unused-vars
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
@@ -29,50 +27,31 @@ const ngModule = angular
     'ngMaterial',
     'ngRedux',
     'angulartics',
-    // 'angulartics.debug',
+  // 'angulartics.debug',
     'angulartics.google.analytics'
   ])
-
-/* eslint-disable */
-  .config( // @ngInject
-    /* eslint-enable */
+  .config(['$locationProvider',
     $locationProvider => {
-      // use the HTML5 History API
       $locationProvider.html5Mode(true);
-    })
-/* eslint-disable */
-  .config( // @ngInject
-    /* eslint-enable */
-    $mdThemingProvider => {
-      $mdThemingProvider.theme('default')
-        .primaryPalette('light-green');
-    })
-/* eslint-disable */
-  .config( // @ngInject
-    /* eslint-enable */
-    $locationProvider => {
-      // Enable HTML5 Location Mode
-      $locationProvider.hashPrefix('!');
-    })
-/* eslint-disable */
-  .config( // @ngInject
-    $ngReduxProvider => {
-      /* eslint-enable */
-      $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
-    })
-/* eslint-disable */
-  .config( // @ngInject
-    $analyticsProvider => {
-      /* eslint-enable */
-      if (window.location.href.match(/local/)) {
-        $analyticsProvider.developerMode(true);
-      }
-    });
+    }])
+  .config(['$mdThemingProvider', $mdThemingProvider => {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('light-green');
+  }])
+  .config(['$ngReduxProvider', $ngReduxProvider => {
+    $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
+  }])
+  .config(['$analyticsProvider', $analyticsProvider => {
+    if (window.location.href.match(/local/)) {
+      $analyticsProvider.developerMode(true);
+    }
+  }]);
 
-// font faces and icons available site wide
-// .styl files will use the font-faces
-// .html file will use the icons
-// webpack will url-inline them into bundle.js
+/*
+font faces and icons available site wide
+.styl files will use the font-faces
+.html file will use the icons
+webpack will url-inline them into bundle.js */
 import './assets/fonts/font_faces.styl';
 import './assets/icons/flaticon/flaticon.css';
 
