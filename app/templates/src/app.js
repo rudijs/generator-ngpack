@@ -15,6 +15,10 @@ import rootReducer from './reducers';
 import 'angular-material';
 import 'angular-material/angular-material.min.css';
 
+import 'angulartics';
+import 'angulartics-google-analytics';
+// import 'angulartics/src/angulartics-debug';
+
 if (ON_TEST) {
   require('angular-mocks');
 }
@@ -23,7 +27,10 @@ const ngModule = angular
   .module('app', [
     'ui.router',
     'ngMaterial',
-    'ngRedux'
+    'ngRedux',
+    'angulartics',
+    // 'angulartics.debug',
+    'angulartics.google.analytics'
   ])
 
 /* eslint-disable */
@@ -52,6 +59,14 @@ const ngModule = angular
     $ngReduxProvider => {
       /* eslint-enable */
       $ngReduxProvider.createStoreWith(rootReducer, [thunk]);
+    })
+/* eslint-disable */
+  .config( // @ngInject
+    $analyticsProvider => {
+      /* eslint-enable */
+      if (window.location.href.match(/local/)) {
+        $analyticsProvider.developerMode(true);
+      }
     });
 
 // font faces and icons available site wide

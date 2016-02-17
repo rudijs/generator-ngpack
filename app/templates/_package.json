@@ -68,6 +68,8 @@
     "angular-aria": "^1.4.8",
     "angular-material": "^1.0.1",
     "angular-ui-router": "^0.2.15",
+    "angulartics": "^1.0.3",
+    "angulartics-google-analytics": "^0.1.4",
     "koa": "^1.1.2",
     "koa-compress": "^1.0.8",
     "koa-ejs": "^3.0.0",
